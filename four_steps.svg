@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" width="960" height="360" font-family="Segoe UI, Helvetica, Arial, sans-serif" role="img" aria-label="Classifying a photo in four steps: resize to 224 by 224, add a batch axis, preprocess with the network's own preprocess_input, predict and decode the 1,000 probabilities into class names. Skipping step 3 does not crash, but turns a llama into a shower curtain.">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5d6b5f"/></marker>
+  </defs>
+
+  <rect width="960" height="360" fill="#ffffff"/>
+
+  <!-- step 1: resize -->
+  <rect x="20" y="20" width="200" height="270" rx="10" fill="#eef4f8" stroke="#2d65a6" stroke-width="1.5"/>
+  <circle cx="46" cy="50" r="15" fill="#2d65a6"/>
+  <text x="46" y="56" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">1</text>
+  <text x="70" y="56" font-size="16" font-weight="700" fill="#1d2a1f">Resize</text>
+  <!-- large photo -->
+  <rect x="32" y="92" width="96" height="66" rx="3" fill="#cfe3f3" stroke="#5d6b5f" stroke-width="1"/>
+  <circle cx="108" cy="108" r="7" fill="#f2c14e"/>
+  <path d="M32 158 L62 124 L82 142 L98 128 L128 158z" fill="#5f9a32"/>
+  <text x="80" y="176" text-anchor="middle" font-size="11" fill="#5d6b5f">any size</text>
+  <path d="M134 125 H152" stroke="#5d6b5f" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+  <!-- small square photo -->
+  <rect x="160" y="105" width="40" height="40" rx="2" fill="#cfe3f3" stroke="#5d6b5f" stroke-width="1"/>
+  <circle cx="191" cy="113" r="4" fill="#f2c14e"/>
+  <path d="M160 145 L173 128 L182 137 L189 131 L200 145z" fill="#5f9a32"/>
+  <text x="180" y="163" text-anchor="middle" font-size="11" fill="#5d6b5f">224 × 224</text>
+  <text x="120" y="222" text-anchor="middle" font-size="13" font-family="Consolas, Menlo, monospace" fill="#1d2a1f">(224, 224, 3)</text>
+  <text x="120" y="250" text-anchor="middle" font-size="12" fill="#5d6b5f">to the size the network</text>
+  <text x="120" y="267" text-anchor="middle" font-size="12" fill="#5d6b5f">was trained on</text>
+
+  <path d="M223 155 H257" stroke="#5d6b5f" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+
+  <!-- step 2: batch axis -->
+  <rect x="260" y="20" width="200" height="270" rx="10" fill="#eef4f8" stroke="#2d65a6" stroke-width="1.5"/>
+  <circle cx="286" cy="50" r="15" fill="#2d65a6"/>
+  <text x="286" y="56" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">2</text>
+  <text x="310" y="56" font-size="16" font-weight="700" fill="#1d2a1f">Add batch axis</text>
+  <rect x="322" y="88" width="76" height="76" rx="8" fill="none" stroke="#2d65a6" stroke-width="2" stroke-dasharray="6 4"/>
+  <rect x="340" y="106" width="40" height="40" rx="2" fill="#cfe3f3" stroke="#5d6b5f" stroke-width="1"/>
+  <circle cx="371" cy="114" r="4" fill="#f2c14e"/>
+  <path d="M340 146 L353 129 L362 138 L369 132 L380 146z" fill="#5f9a32"/>
+  <text x="360" y="182" text-anchor="middle" font-size="11" font-weight="700" fill="#2d65a6">batch of 1</text>
+  <text x="360" y="222" text-anchor="middle" font-size="13" font-family="Consolas, Menlo, monospace" fill="#1d2a1f">(<tspan font-weight="700" fill="#2d65a6">1</tspan>, 224, 224, 3)</text>
+  <text x="360" y="250" text-anchor="middle" font-size="12" fill="#5d6b5f">Keras always expects a batch,</text>
+  <text x="360" y="267" text-anchor="middle" font-size="12" fill="#5d6b5f">even for a single image</text>
+
+  <path d="M463 155 H497" stroke="#5d6b5f" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+
+  <!-- step 3: preprocess (highlighted) -->
+  <rect x="500" y="20" width="200" height="270" rx="10" fill="#fdf0e2" stroke="#b05a0c" stroke-width="2.5"/>
+  <circle cx="526" cy="50" r="15" fill="#b05a0c"/>
+  <text x="526" y="56" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">3</text>
+  <text x="550" y="56" font-size="16" font-weight="700" fill="#1d2a1f">Preprocess</text>
+  <!-- 0..255 -->
+  <path d="M520 104 H680" stroke="#1d2a1f" stroke-width="2"/>
+  <path d="M520 98 V110 M600 98 V110 M680 98 V110" stroke="#1d2a1f" stroke-width="2"/>
+  <text x="520" y="92" text-anchor="middle" font-size="12" font-family="Consolas, Menlo, monospace" fill="#1d2a1f">0</text>
+  <text x="600" y="92" text-anchor="middle" font-size="12" font-family="Consolas, Menlo, monospace" fill="#1d2a1f">127.5</text>
+  <text x="680" y="92" text-anchor="middle" font-size="12" font-family="Consolas, Menlo, monospace" fill="#1d2a1f">255</text>
+  <!-- mapping -->
+  <path d="M520 112 L560 152 M600 112 L600 152 M680 112 L640 152" stroke="#b05a0c" stroke-width="1.5" stroke-dasharray="4 3" fill="none"/>
+  <!-- -1..1 -->
+  <path d="M560 160 H640" stroke="#1d2a1f" stroke-width="2"/>
+  <path d="M560 154 V166 M600 154 V166 M640 154 V166" stroke="#1d2a1f" stroke-width="2"/>
+  <text x="560" y="182" text-anchor="middle" font-size="12" font-family="Consolas, Menlo, monospace" fill="#1d2a1f">−1</text>
+  <text x="600" y="182" text-anchor="middle" font-size="12" font-family="Consolas, Menlo, monospace" fill="#1d2a1f">0</text>
+  <text x="640" y="182" text-anchor="middle" font-size="12" font-family="Consolas, Menlo, monospace" fill="#1d2a1f">1</text>
+  <text x="600" y="222" text-anchor="middle" font-size="13" font-family="Consolas, Menlo, monospace" fill="#1d2a1f">preprocess_input</text>
+  <text x="600" y="250" text-anchor="middle" font-size="12" fill="#5d6b5f">the network's own scaling,</text>
+  <text x="600" y="267" text-anchor="middle" font-size="12" fill="#5d6b5f">here MobileNetV2</text>
+
+  <path d="M703 155 H737" stroke="#5d6b5f" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+
+  <!-- step 4: predict and decode -->
+  <rect x="740" y="20" width="200" height="270" rx="10" fill="#e0f2ec" stroke="#2e8a6e" stroke-width="1.5"/>
+  <circle cx="766" cy="50" r="15" fill="#2e8a6e"/>
+  <text x="766" y="56" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">4</text>
+  <text x="790" y="56" font-size="16" font-weight="700" fill="#1d2a1f">Predict &amp; decode</text>
+  <text x="754" y="104" font-size="12" font-weight="700" fill="#1d2a1f">llama</text>
+  <rect x="794" y="93" width="100" height="14" rx="2" fill="#2e8a6e"/>
+  <text x="900" y="104" font-size="12" font-weight="700" font-family="Consolas, Menlo, monospace" fill="#2e8a6e">0.91</text>
+  <rect x="794" y="117" width="7" height="10" rx="2" fill="#a9b5ab"/>
+  <rect x="794" y="133" width="5" height="10" rx="2" fill="#a9b5ab"/>
+  <rect x="794" y="149" width="3" height="10" rx="2" fill="#a9b5ab"/>
+  <text x="840" y="182" text-anchor="middle" font-size="11" fill="#5d6b5f">… 999 other classes</text>
+  <text x="840" y="222" text-anchor="middle" font-size="13" font-family="Consolas, Menlo, monospace" fill="#1d2a1f">decode_predictions</text>
+  <text x="840" y="250" text-anchor="middle" font-size="12" fill="#5d6b5f">1,000 probabilities</text>
+  <text x="840" y="267" text-anchor="middle" font-size="12" fill="#5d6b5f">→ class names</text>
+
+  <!-- warning -->
+  <rect x="20" y="306" width="920" height="40" rx="8" fill="#fdf0e2" stroke="#b05a0c" stroke-width="1.5"/>
+  <text x="480" y="331" text-anchor="middle" font-size="14" fill="#1d2a1f"><tspan font-weight="700" fill="#b05a0c">⚠ Step 3 is easy to forget, and nothing crashes:</tspan> without it, the llama (0.91) becomes a "shower curtain" (0.74).</text>
+</svg>
